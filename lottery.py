@@ -9,6 +9,7 @@ def showStatIfWin(cost ,countBuyLottery ,myNumber ,currentRound ,
     print("Round     = " ,currentRound)
     print("Month     = " ,month)
     print("Year      = " ,currentYear)
+    print("Money     = " ,6000000 - cost)
 def showStat(cost ,countBuyLottery ,myNumber ,currentRound ,
             currentYear ,randomNumber ,month):
     print(countBuyLottery ," : " ,myNumber ," : " ,randomNumber
