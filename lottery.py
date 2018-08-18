@@ -66,7 +66,7 @@ def main():
     randomNumber = 0
 
     while(not checkWin):
-        randomNumber = 123456
+        randomNumber = randomNum()
         checkWin = checkLottery(myNumber ,randomNumber)
         cost = totalCost(cost)
         countBuyLottery = totalBuyLottery(countBuyLottery)
