@@ -64,24 +64,30 @@ def main():
     checkWin = False
     randomNumber = 0
     amountFrom2 = 0
+    myNumber2 = int(str(myNumber)[4] + str(myNumber)[5])
+    count2 = 0
+    check2 = False
 
     while(not checkWin):
         randomNumber = randomNum()
         randomNumber2 = randomNum2()
-
-        if(myNumber == randomNum2):
+        print(myNumber2 , randomNumber2 , myNumber2 == randomNumber2)
+        if(myNumber2 == randomNumber2):
+            count2 += 1
+            check2 = True
             amountFrom2 += 2000
 
         checkWin = checkLottery(myNumber ,randomNumber)
         cost = totalCost(cost)
         countBuyLottery = totalBuyLottery(countBuyLottery)
 
-        showStat(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,randomNumber ,month[currentMonth])
+        #showStat(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,randomNumber ,month[currentMonth])
         #print(countBuyLottery ," : " ,myNumber ," : " ,randomNumber ," : " ,currentRound ," : " ,month[currentMonth] ," : " ,currentYear ," : " ,cost)
-        if(checkWin):
+        if(checkWin or check2):
             print()
+            print(count2)
             print(amountFrom2)
-            print(cost - amountFrom2)
+            print(amountFrom2 - cost)
             showStatIfWin(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,randomNumber ,month[currentMonth])
             break
 
