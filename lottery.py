@@ -13,6 +13,9 @@ def showStatIfWin(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,ra
 def showStat(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,randomNumber ,month):
     print(countBuyLottery ," : " ,myNumber ," : " ,randomNumber ," : " ,currentRound ," : " ,month ," : " ,currentYear ," : " ,cost)
 
+def randomNum2():
+    return randint(0,99)
+
 def checkLottery(myNumber ,numRandom):
     if(myNumber == numRandom):
         return True
@@ -60,9 +63,15 @@ def main():
     currentYear = 2018
     checkWin = False
     randomNumber = 0
+    amountFrom2 = 0
 
     while(not checkWin):
         randomNumber = randomNum()
+        randomNumber2 = randomNum2()
+
+        if(myNumber == randomNum2):
+            amountFrom2 += 2000
+
         checkWin = checkLottery(myNumber ,randomNumber)
         cost = totalCost(cost)
         countBuyLottery = totalBuyLottery(countBuyLottery)
@@ -70,6 +79,9 @@ def main():
         showStat(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,randomNumber ,month[currentMonth])
         #print(countBuyLottery ," : " ,myNumber ," : " ,randomNumber ," : " ,currentRound ," : " ,month[currentMonth] ," : " ,currentYear ," : " ,cost)
         if(checkWin):
+            print()
+            print(amountFrom2)
+            print(cost - amountFrom2)
             showStatIfWin(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,randomNumber ,month[currentMonth])
             break
 
