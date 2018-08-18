@@ -1,21 +1,85 @@
 from random import randint
 
-def showStatIfWin():
+def showStatIfWin(cost ,countBuyLottery ,myNumber ,currentRound ,
+            currentYear ,randomNumber ,month):
+    print(" ====================================")
+    print("Count buy = " ,countBuyLottery)
+    print("My Number = " ,myNumber)
+    print("Jackpot   = " ,randomNumber)
+    print("Round     = " ,currentRound)
+    print("Month     = " ,month)
+    print("Year      = " ,currentYear)
+def showStat(cost ,countBuyLottery ,myNumber ,currentRound ,
+            currentYear ,randomNumber ,month):
+    print(countBuyLottery ," : " ,myNumber ," : " ,randomNumber
+            ," : " ,currentRound ," : " ,month ," : " ,currentYear ," : " ,cost)
 
-def shoeStat():
 
 def checkLottery(myNumber ,numRandom):
     if(myNumber == numRandom):
-        showStatIfWin()
-        return true
+        return True
     else:
-        return false
+        return False
 
 def randomNum():
-    return random(0,999999)
+    return randint(0,999999)
+
+def nextYear(currentMonth ,currentYear):
+    if(currentMonth == 11):
+        currentYear += 1
+        return currentYear
+    else:
+        return currentYear
+
+def nextMonth(currentMonth):
+    if(currentMonth == 11):
+        return 0
+    else:
+        currentMonth += 1
+        return currentMonth
+
+def totalCost(cost):
+    cost += 80
+    return cost
+
+def totalBuyLottery(count):
+    count += 1
+    return count
+
+def totalRound(currentRound):
+    if(currentRound == 1):
+        return 2
+    else:
+        return 1
 
 def main():
     cost = 0
+    countBuyLottery = 0
     myNumber = int(input())
-    mount = ['JAN','FEB','MAR','APR','MAY','JUN',
+    month = ['JAN','FEB','MAR','APR','MAY','JUN',
             'JUL','AUG','SEP','OCT','NOV','DEC']
+    currentRound = 2
+    currentMonth = 7
+    currentYear = 2018
+    checkWin = False
+    randomNumber = 0
+
+    while(not checkWin):
+        randomNumber = 123456
+        checkWin = checkLottery(myNumber ,randomNumber)
+        cost = totalCost(cost)
+        countBuyLottery = totalBuyLottery(countBuyLottery)
+
+        showStat(cost ,countBuyLottery ,myNumber ,currentRound ,
+                currentYear ,randomNumber ,month[currentMonth])
+
+        if(checkWin):
+            showStatIfWin(cost ,countBuyLottery ,myNumber ,currentRound ,
+                    currentYear ,randomNumber ,month[currentMonth])
+            break
+
+        currentRound = totalRound(currentRound)
+        currentYear = nextYear(currentMonth ,currentYear)
+        currentMonth = nextMonth(currentMonth)
+
+main()
