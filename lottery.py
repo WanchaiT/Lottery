@@ -86,6 +86,7 @@ def main():
         if(checkWin or check2):
             print()
             print(count2)
+            print(cost)
             print(amountFrom2)
             print(amountFrom2 - cost)
             showStatIfWin(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,randomNumber ,month[currentMonth])
