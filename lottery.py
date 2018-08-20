@@ -1,4 +1,5 @@
 from random import randint
+import time
 
 def showStatIfWin(cost ,countBuyLottery ,myNumber ,currentRound ,currentYear ,randomNumber ,month):
     print(" ====================================")
@@ -51,6 +52,7 @@ def totalRound(currentRound):
         return 1
 
 def main():
+    t0 = time.time()
     cost = 0
     countBuyLottery = 0
     myNumber = int(input())
@@ -76,5 +78,7 @@ def main():
         currentRound = totalRound(currentRound)
         currentYear = nextYear(currentMonth ,currentYear)
         currentMonth = nextMonth(currentMonth)
+
+    print(time.time() - t0)
 
 main()
